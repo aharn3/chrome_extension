@@ -1,10 +1,25 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extensions",
+  "name": "Gmail Email Categorizer",
   "description": "Base Level Extension",
   "version": "1.0",
+  "permissions": ["identity", "storage", "scripting"],
+  "oauth2": {
+    "client_id": "837343384623-9ljsafu5l1nceg26qk56eos3dgpbgtql.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/gmail.readonly"]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
   "action": {
-    "default_popup": "hello.html",
-    "default_icon": "icon.jpg"
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
   }
 }
+
